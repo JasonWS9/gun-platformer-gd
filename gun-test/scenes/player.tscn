@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjweditpgcsf8"]
+
+[ext_resource type="Script" uid="uid://cyxvgrcrej20" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dpn8emcmmgtij" path="res://assets/penguin/5. Character Animations/Anim_Penguin_idle1_v1.0_spritesheet.png" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://c07hgoeahedtb" path="res://scripts/gun_resource.gd" id="2_tuyoq"]
+[ext_resource type="Resource" uid="uid://ceqhijq8ix3qh" path="res://resources/shotgun.tres" id="3_fjrip"]
+[ext_resource type="Texture2D" uid="uid://dv6npor0klgn2" path="res://assets/GunsPack/Guns/SawedOffShotgun.png" id="3_qhqgy"]
+[ext_resource type="Resource" uid="uid://dm1sy1glicg26" path="res://resources/smg.tres" id="4_smehm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(14, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqkch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_g2els")
+gravity = 1000.0
+air_resist = 0.98
+inventory = Array[ExtResource("2_tuyoq")]([ExtResource("3_fjrip"), ExtResource("4_smehm")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dqkch")
+
+[node name="gunpivot" type="Marker2D" parent="."]
+position = Vector2(0, 7)
+
+[node name="gun" type="Sprite2D" parent="gunpivot"]
+position = Vector2(22, 0)
+texture = ExtResource("3_qhqgy")
+
+[node name="firepoint" type="Marker2D" parent="gunpivot"]
+position = Vector2(37, -3)
+
+[node name="shoottimer" type="Timer" parent="."]
+one_shot = true

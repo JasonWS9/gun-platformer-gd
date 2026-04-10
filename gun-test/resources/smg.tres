@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GunResource" load_steps=5 format=3 uid="uid://dm1sy1glicg26"]
+
+[ext_resource type="Resource" uid="uid://b10g501kiqg84" path="res://resources/smg_bullet.tres" id="1_kc3b5"]
+[ext_resource type="Script" uid="uid://c07hgoeahedtb" path="res://scripts/gun_resource.gd" id="1_vfff6"]
+[ext_resource type="Texture2D" uid="uid://21o7d447t8c" path="res://assets/GunsPack/Guns/MP5.png" id="2_3mo58"]
+[ext_resource type="PackedScene" uid="uid://j13phi3os181" path="res://scenes/bullet.tscn" id="2_83sy3"]
+
+[resource]
+script = ExtResource("1_vfff6")
+name = "Smg"
+sprite = ExtResource("2_3mo58")
+force = 100.0
+cooldown = 0.1
+is_holdable = true
+bullet_data = ExtResource("1_kc3b5")
+bullet_scene = ExtResource("2_83sy3")
+metadata/_custom_type_script = "uid://c07hgoeahedtb"

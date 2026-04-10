@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GunResource" load_steps=5 format=3 uid="uid://ceqhijq8ix3qh"]
+
+[ext_resource type="Script" uid="uid://c07hgoeahedtb" path="res://scripts/gun_resource.gd" id="1_4l2jb"]
+[ext_resource type="Texture2D" uid="uid://dv6npor0klgn2" path="res://assets/GunsPack/Guns/SawedOffShotgun.png" id="1_6tmgt"]
+[ext_resource type="Resource" uid="uid://dfpgskwttlm7r" path="res://resources/shotgun_shell.tres" id="1_7kleh"]
+[ext_resource type="PackedScene" uid="uid://j13phi3os181" path="res://scenes/bullet.tscn" id="2_odcac"]
+
+[resource]
+script = ExtResource("1_4l2jb")
+name = "Shotgun"
+sprite = ExtResource("1_6tmgt")
+force = 600.0
+cooldown = 0.4
+bullet_data = ExtResource("1_7kleh")
+bullet_scene = ExtResource("2_odcac")
+metadata/_custom_type_script = "uid://c07hgoeahedtb"
