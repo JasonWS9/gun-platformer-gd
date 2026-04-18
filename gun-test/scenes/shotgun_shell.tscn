@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://j13phi3os181"]
+
+[ext_resource type="Script" uid="uid://cm7hyc6o5emmr" path="res://scripts/bullet.gd" id="1_nj8pf"]
+[ext_resource type="Texture2D" uid="uid://cspgimbyqb60y" path="res://assets/WeaponsPack/Sprites/Bullets.png" id="2_2qwf5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y25gk"]
+size = Vector2(17, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
+atlas = ExtResource("2_2qwf5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eoqba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5glv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="shotgun_shell" type="Area2D"]
+script = ExtResource("1_nj8pf")
+speed = 250.0
+damage = 5.0
+lifetime = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_y25gk")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_eoqba")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
