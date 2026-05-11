@@ -9,6 +9,6 @@ script = ExtResource("1_4l2jb")
 name = "Shotgun"
 sprite_frames = ExtResource("4_odcac")
 force = 600.0
-cooldown = 0.4
+cooldown = 0.2
 bullet_scene = ExtResource("1_7kleh")
 metadata/_custom_type_script = "uid://c07hgoeahedtb"
